@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { listService } from "../Services/ListService.js";
 
-//TODO Don't forget to render to the screen after every data change.
+
 function _drawLists() { 
   let template = ""
   ProxyState.lists.forEach(l => template += l.ListTemplate)
@@ -11,7 +11,6 @@ function _drawLists() {
 //Public
 export default class ListController {
   constructor() {
-    //NOTE: Dont forget to register an event listener(s).
     ProxyState.on("lists", _drawLists)
     ProxyState.on("tasks", _drawLists)
     _drawLists();
@@ -32,7 +31,6 @@ export default class ListController {
     
   }
 
-  //TODO: Your app will need the ability to create, and delete lists
   delete(id) {
     listService.delete(id)
   }
